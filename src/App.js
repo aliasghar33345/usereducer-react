@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from 'react';
+import CounterReducer from './CounterReduxer';
 
 function App() {
+
+   const Counter = ()=>{
+    const [count , dispatch] = useReducer(CounterReducer,0);
+    return(
+      <>
+      Counter: {count}
+      <button onClick={() => dispatch('INCREMENT')}>+</button>
+      <button onClick={() => dispatch('DECREMENT')}>-</button>
+    </>
+    )
+
+   }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Counter></Counter>
     </div>
   );
 }
